@@ -294,6 +294,13 @@
 
           
             
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/18/当React.js遇到ES6/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/18/当React.js遇到ES6/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -334,23 +341,23 @@
 </ol>
 <p>所有函数在es5和es6中都可以直接使用，不过<code>componentWillMount</code>在es6中可被<code>constructor</code>代替</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// The ES5 way</span></span><br><span class="line"><span class="keyword">var</span> EmbedModal = React.createClass(&#123;</span><br><span class="line">  	componentWillMount: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; … &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// The ES6+ way</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EmbedModal</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">	<span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">		<span class="keyword">super</span>(props);</span><br><span class="line">		<span class="comment">// 通常在componentwillmount当中的操作，可放到这里...</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="有几个关键点："><a href="#有几个关键点：" class="headerlink" title="有几个关键点："></a>有几个关键点：</h3><ol>
+<h2 id="有几个关键点"><a href="#有几个关键点" class="headerlink" title="有几个关键点"></a>有几个关键点</h2><ol>
 <li>componentWillMount 用来处理render之前的逻辑  </li>
 <li>不要在render中处理业务逻辑，即一定不能出现改变 state 的操作  </li>
 <li>componentDidMount 中处理和真实DOM相关的逻辑，典型的场景：在这里调用ajax，使用jQuery  </li>
 </ol>
-<h3 id="实例化组件的过程："><a href="#实例化组件的过程：" class="headerlink" title="实例化组件的过程："></a>实例化组件的过程：</h3><ol>
+<h2 id="实例化组件的过程"><a href="#实例化组件的过程" class="headerlink" title="实例化组件的过程"></a>实例化组件的过程</h2><ol>
 <li>getInitialState: 获取 this.state 的默认值</li>
 <li>componentWillMount: 在render之前调用此方法，在render之前需要做的事情就在这里处理</li>
 <li>render: 渲染并返回一个虚拟DOM</li>
 <li>componentDidMount: 在render之后，react会使用render返回的虚拟DOM来创建真实DOM，完成之后调用此方法。  </li>
 </ol>
-<h3 id="更新组件的过程："><a href="#更新组件的过程：" class="headerlink" title="更新组件的过程："></a>更新组件的过程：</h3><ol>
+<h2 id="更新组件的过程"><a href="#更新组件的过程" class="headerlink" title="更新组件的过程"></a>更新组件的过程</h2><ol>
 <li>componentWillRecieveProps:   父组件或者通过组件的实例调用 setProps 改变当前组件的 props 时调用。</li>
 <li>shouldComponentUpdate: 是否需要更新，慎用</li>
 <li>componentWillUpdate: 调用 render方之前</li>
 <li>render: </li>
-<li>componentDidUpdate: 真实DOM已经完成更新。</li>
+<li>componentDidUpdate: 真实DOM已经完成更新。  </li>
 </ol>
 <h1 id="属性初始化"><a href="#属性初始化" class="headerlink" title="属性初始化"></a>属性初始化</h1><p>React.js的组件有两个属性 <strong>props</strong> ， <strong>state</strong> 。  </p>
 <blockquote>
@@ -376,15 +383,15 @@
 <h1 id="字符串模板"><a href="#字符串模板" class="headerlink" title="字符串模板"></a>字符串模板</h1><p>感觉这是平常最有用的一个特性，毕竟经常会碰到字符串拼接的需求</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> inputName = <span class="string">'name'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> className = inputName + <span class="string">'Value'</span>;</span><br><span class="line"><span class="comment">//上下两种形式等价</span></span><br><span class="line"><span class="keyword">let</span> className = <span class="string">`<span class="subst">$&#123;inputName&#125;</span>Value`</span>;</span><br></pre></td></tr></table></figure>
 <h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p>一些关于React.js的属性说明  </p>
-<h3 id="this-props-children"><a href="#this-props-children" class="headerlink" title="this.props.children"></a>this.props.children</h3><p>本身<code>this.props</code>对象的属性与组件的属性一一对应，但是有一个例外，就是 <code>this.props.children</code>属性。它表示组件的所有子节点。<br><code>this.props.children</code>的值可能有三种可能：  </p>
+<h2 id="this-props-children"><a href="#this-props-children" class="headerlink" title="this.props.children"></a>this.props.children</h2><p>本身<code>this.props</code>对象的属性与组件的属性一一对应，但是有一个例外，就是 <code>this.props.children</code>属性。它表示组件的所有子节点。<br><code>this.props.children</code>的值可能有三种可能：  </p>
 <ol>
 <li>如果当前组件没有子节点，它就是 <code>undefined</code>。  </li>
 <li>如果有一个子节点，数据类型是 <code>object</code>。  </li>
 <li>如果有多个子节点，数据类型就是 <code>array</code>。<br>所以，最好使用React.js提供的<code>React.Children</code>来处理<code>this.props.children</code>，<code>React.Children</code>永远都是 <code>array</code>。</li>
 </ol>
-<h3 id="PropTypes"><a href="#PropTypes" class="headerlink" title="PropTypes"></a>PropTypes</h3><p>组件的属性验证</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// The ES5 way</span></span><br><span class="line"><span class="keyword">var</span> Video = React.createClass(&#123;</span><br><span class="line">    propTypes: &#123;</span><br><span class="line">        autoPlay: React.PropTypes.bool.isRequired,</span><br><span class="line">        maxLoops: React.PropTypes.number.isRequired,</span><br><span class="line">        posterFrameSrc: React.PropTypes.string.isRequired,</span><br><span class="line">        videoSrc: React.PropTypes.string.isRequired,</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// The ES6+ way</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Video</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> propTypes = &#123;</span><br><span class="line">        autoPlay: React.PropTypes.bool.isRequired,</span><br><span class="line">        maxLoops: React.PropTypes.number.isRequired,</span><br><span class="line">        posterFrameSrc: React.PropTypes.string.isRequired,</span><br><span class="line">        videoSrc: React.PropTypes.string.isRequired,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="string">``</span><span class="string">`  </span><br><span class="line"></span><br><span class="line">### 获取真实的DOM节点</span><br><span class="line"></span><br><span class="line">组件并不是真实的 DOM 节点，而是React.js中最核心的虚拟 DOM (virtual DOM)，只有当它插入HTML文档后，才会变成真是的DOM，对应React.js中的 `</span>componentDidMount<span class="string">` </span><br><span class="line"></span><br><span class="line">`</span><span class="string">``</span> javascript</span><br><span class="line"><span class="keyword">var</span> Vedio = React.createClass(&#123;</span><br><span class="line">    handleClick: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.refs.myTextInput.focus();</span><br><span class="line">    &#125;,</span><br><span class="line">    render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	    <span class="keyword">return</span> (</span><br><span class="line">	        &lt;div&gt;</span><br><span class="line">	            &lt;input type="text" ref="myTextInput" /&gt;</span><br><span class="line">	            &lt;input type="button" value="Focus the text input" onClick=&#123;this.handleClick&#125; /&gt;</span><br><span class="line">	        &lt;/div&gt;</span><br><span class="line">	    );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h3 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h3><p>表单填入这个行为属于用户跟组件的互动，所以不能用 <code>this.props</code> </p>
+<h2 id="PropTypes"><a href="#PropTypes" class="headerlink" title="PropTypes"></a>PropTypes</h2><p>组件的属性验证</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// The ES5 way</span></span><br><span class="line"><span class="keyword">var</span> Video = React.createClass(&#123;</span><br><span class="line">    propTypes: &#123;</span><br><span class="line">        autoPlay: React.PropTypes.bool.isRequired,</span><br><span class="line">        maxLoops: React.PropTypes.number.isRequired,</span><br><span class="line">        posterFrameSrc: React.PropTypes.string.isRequired,</span><br><span class="line">        videoSrc: React.PropTypes.string.isRequired,</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// The ES6+ way</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Video</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> propTypes = &#123;</span><br><span class="line">        autoPlay: React.PropTypes.bool.isRequired,</span><br><span class="line">        maxLoops: React.PropTypes.number.isRequired,</span><br><span class="line">        posterFrameSrc: React.PropTypes.string.isRequired,</span><br><span class="line">        videoSrc: React.PropTypes.string.isRequired,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="string">``</span><span class="string">`  </span><br><span class="line"></span><br><span class="line">## 获取真实的DOM节点</span><br><span class="line"></span><br><span class="line">组件并不是真实的 DOM 节点，而是React.js中最核心的虚拟 DOM (virtual DOM)，只有当它插入HTML文档后，才会变成真是的DOM，对应React.js中的 `</span>componentDidMount<span class="string">` </span><br><span class="line"></span><br><span class="line">`</span><span class="string">``</span> javascript</span><br><span class="line"><span class="keyword">var</span> Vedio = React.createClass(&#123;</span><br><span class="line">    handleClick: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.refs.myTextInput.focus();</span><br><span class="line">    &#125;,</span><br><span class="line">    render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	    <span class="keyword">return</span> (</span><br><span class="line">	        &lt;div&gt;</span><br><span class="line">	            &lt;input type="text" ref="myTextInput" /&gt;</span><br><span class="line">	            &lt;input type="button" value="Focus the text input" onClick=&#123;this.handleClick&#125; /&gt;</span><br><span class="line">	        &lt;/div&gt;</span><br><span class="line">	    );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h2><p>表单填入这个行为属于用户跟组件的互动，所以不能用 <code>this.props</code> </p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Video</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    state = &#123; value: <span class="string">'Hello!'</span> &#125;</span><br><span class="line">    handleChange = (e) =&gt; &#123; </span><br><span class="line">        <span class="keyword">this</span>.setState(&#123; value: e.target.value &#125;) </span><br><span class="line">    &#125;</span><br><span class="line">    render: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> value = <span class="keyword">this</span>.state.value;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">value</span>=<span class="string">&#123;value&#125;</span> <span class="attr">onChange</span>=<span class="string">&#123;this.handleChange&#125;</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;value&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li><a href="http://blog.mcbird.cn/2015/09/11/react-on-es6-plus/" target="_blank" rel="external">http://blog.mcbird.cn/2015/09/11/react-on-es6-plus/</a>  </li>
@@ -462,6 +469,13 @@
           
 
           
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/17/部署hexo的基本命令/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/17/部署hexo的基本命令/" itemprop="commentsCount"></span>
+                </a>
+              </span>
             
           
 
@@ -609,6 +623,13 @@ theme: next
           
 
           
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/17/hello-world/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/17/hello-world/" itemprop="commentsCount"></span>
+                </a>
+              </span>
             
           
 
@@ -873,9 +894,28 @@ theme: next
 
   
 
+  
+    
+  
 
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"re0618"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
 
   
+    
+  
+
+
 
 
 
