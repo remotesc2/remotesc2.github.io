@@ -88,22 +88,19 @@
 
 
 
-<meta name="description" content="虽然很早以前就知道了React.js，但是最近才开真正着手使用。一旦开始，直接晕菜。都2016年了，况且还是自己瞎捣鼓的项目，怎么可能还用es5？所以，…  
-component &amp;amp; 组件React.js就是将一个个功能点封装成component，即组件，然后像普通HTML标签一样使用。在网上看到的大部分教程里都还是使用React.createClass()来创建组件  
-12345678">
+<meta name="description" content="虽然很早以前就知道了React.js，但是最近才下手使用。结果一上来就直接晕菜（ es5 or es6 ）都2016年了，况且还是自己瞎捣鼓的项目，怎么可能还用es5？所以，……  
+component &amp;amp; 组件React.js就是将一个个功能点封装成component，即组件，然后像普通HTML标签一样使用。在网上看到的大部分教程里都还是使用React.createClass()来创建组">
 <meta property="og:type" content="article">
 <meta property="og:title" content="当React.js遇到ES6">
 <meta property="og:url" content="http://yoursite.com/2016/06/18/当React.js遇到ES6/index.html">
 <meta property="og:site_name" content="Re的废话流">
-<meta property="og:description" content="虽然很早以前就知道了React.js，但是最近才开真正着手使用。一旦开始，直接晕菜。都2016年了，况且还是自己瞎捣鼓的项目，怎么可能还用es5？所以，…  
-component &amp;amp; 组件React.js就是将一个个功能点封装成component，即组件，然后像普通HTML标签一样使用。在网上看到的大部分教程里都还是使用React.createClass()来创建组件  
-12345678">
-<meta property="og:updated_time" content="2016-06-18T12:48:03.000Z">
+<meta property="og:description" content="虽然很早以前就知道了React.js，但是最近才下手使用。结果一上来就直接晕菜（ es5 or es6 ）都2016年了，况且还是自己瞎捣鼓的项目，怎么可能还用es5？所以，……  
+component &amp;amp; 组件React.js就是将一个个功能点封装成component，即组件，然后像普通HTML标签一样使用。在网上看到的大部分教程里都还是使用React.createClass()来创建组">
+<meta property="og:updated_time" content="2016-06-18T12:52:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="当React.js遇到ES6">
-<meta name="twitter:description" content="虽然很早以前就知道了React.js，但是最近才开真正着手使用。一旦开始，直接晕菜。都2016年了，况且还是自己瞎捣鼓的项目，怎么可能还用es5？所以，…  
-component &amp;amp; 组件React.js就是将一个个功能点封装成component，即组件，然后像普通HTML标签一样使用。在网上看到的大部分教程里都还是使用React.createClass()来创建组件  
-12345678">
+<meta name="twitter:description" content="虽然很早以前就知道了React.js，但是最近才下手使用。结果一上来就直接晕菜（ es5 or es6 ）都2016年了，况且还是自己瞎捣鼓的项目，怎么可能还用es5？所以，……  
+component &amp;amp; 组件React.js就是将一个个功能点封装成component，即组件，然后像普通HTML标签一样使用。在网上看到的大部分教程里都还是使用React.createClass()来创建组">
 
 
 
@@ -315,7 +312,7 @@ component &amp;amp; 组件React.js就是将一个个功能点封装成component�
       
 
       
-        <p>虽然很早以前就知道了React.js，但是最近才开真正着手使用。一旦开始，直接晕菜。<br>都2016年了，况且还是自己瞎捣鼓的项目，怎么可能还用es5？<br>所以，…  </p>
+        <p>虽然很早以前就知道了React.js，但是最近才下手使用。结果一上来就直接晕菜（ es5 or es6 ）<br>都2016年了，况且还是自己瞎捣鼓的项目，怎么可能还用es5？<br>所以，……  </p>
 <h1 id="component-amp-组件"><a href="#component-amp-组件" class="headerlink" title="component &amp; 组件"></a>component &amp; 组件</h1><p>React.js就是将一个个功能点封装成component，即组件，然后像普通HTML标签一样使用。在网上看到的大部分教程里都还是使用<code>React.createClass()</code>来创建组件  </p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ES5</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Photo</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;  </span><br><span class="line">	handleSomething: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123; ... &#125;,</span><br><span class="line">	render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; ... &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//ES6</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Photo</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">	handleSomething(e) &#123; ... &#125;</span><br><span class="line">	render() &#123; ... &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h1><p>React.js将组建划分为三种状态：  </p>
