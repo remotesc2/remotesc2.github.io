@@ -252,6 +252,297 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/19/Webstorm10无法调试5版nodejs/" itemprop="url">
+                  Webstorm10无法调试5版nodejs
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-19T15:33:31+08:00" content="2016-06-19">
+              2016-06-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/学习/bug-error/" itemprop="url" rel="index">
+                    <span itemprop="name">bug & error</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在Webstorm10中调试node.js，会出现以下错误</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Cannot stop on breakpoint due to internal error:   </span><br><span class="line">org.jetbrains.v8.V8CommandProcessor$1: TypeError: f is </span><br><span class="line">not a function at Function.t.getScopes (eval at </span><br><span class="line">undefined, :217:15) at t.describeFrame (eval at </span><br><span class="line">undefined, :213:33) at t.getFrames (eval at </span><br><span class="line">undefined, :114:89) at </span><br><span class="line">DebugCommandProcessor.r.processDebugJSONRequest (eval </span><br><span class="line">at undefined, :348:15) ...</span><br></pre></td></tr></table></figure>
+<p>百度一番后，发现是因为node.js升级为5版以后，和之前的Webstorm不兼容导致的，至于是否可通过升级Webstorm来解决还没尝试。</p>
+<p>可先通过以下方法解决：  </p>
+<ol>
+<li>找到 <code>/Applications/WebStorm.app/Contents/bin/webstorm.vmoptions</code> 这个文件  </li>
+<li>打开 <code>/Users/somename/Library/Preferences/WebStorm10</code> ，将 <strong>webstorm.vmoptions</strong> 复制过来在。<strong>注意：</strong>这里的 <code>somename</code> 要对应自己电脑用户名  </li>
+<li>用文本编辑器打开 <strong> *webstorm.vmoptions</strong> ，添加一行命令 <code>-Dnodejs.debugger.use.jb.support=false</code>，最终效果如下：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-Xms128m</span><br><span class="line">-Xmx1024m</span><br><span class="line">-XX:MaxPermSize=350m</span><br><span class="line">-XX:ReservedCodeCacheSize=225m</span><br><span class="line">-XX:+UseCompressedOops</span><br><span class="line">-Dnodejs.debugger.use.jb.support=false</span><br></pre></td></tr></table></figure>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
+<li><a href="http://stackoverflow.com/questions/33515777/node-v5-breaks-webstorms-debugger" target="_blank" rel="external">http://stackoverflow.com/questions/33515777/node-v5-breaks-webstorms-debugger</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/06/19/Express4xx不懂（一）/" itemprop="url">
+                  Express4xx不懂（一）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-19T10:48:07+08:00" content="2016-06-19">
+              2016-06-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/学习/back-end/" itemprop="url" rel="index">
+                    <span itemprop="name">back-end</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/学习/back-end/node-js/" itemprop="url" rel="index">
+                    <span itemprop="name">node.js</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/学习/back-end/node-js/Express4/" itemprop="url" rel="index">
+                    <span itemprop="name">Express4</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="从0开始用Express"><a href="#从0开始用Express" class="headerlink" title="从0开始用Express"></a>从0开始用Express</h1><h2 id="盲点"><a href="#盲点" class="headerlink" title="盲点"></a>盲点</h2><h3 id="到底http中的post请求分为几种？"><a href="#到底http中的post请求分为几种？" class="headerlink" title="到底http中的post请求分为几种？"></a>到底http中的post请求分为几种？</h3><p><a href="http://www.ietf.org/rfc/rfc2616.txt">HTTP/1.1协议</a>（明显我就从来没看过）规定HTTP请求有 OPTIONS、GET、HEAD、POST、PUT、DELETE、TRACE、CONNECT 这几种，但是平常说实话也就用到 <strong>get</strong> 和 <strong>post</strong>。  </p>
+<p><strong>get</strong> 还好理解，无非是参数跟在url后头传递，通过 <code>?</code> 来分割 <code>url</code> 和 <code>params</code>，不过这里会不会也有<a href="http://www.baidu.com/s?wd=get请求方式">坑</a>。可是 <strong>post</strong> 就没那么简单，今天在用Express来获取 <strong>post</strong> 参数时，才发现 <strong>post</strong> 提交数据是有几种方式的，记录下（全部来源网络东瞅西瞄）。</p>
+<p>HTTP 协议是以 ASCII 码传输，建立在 TCP/IP 协议之上的应用层规范。规范把 HTTP 请求分为三个部分：状态行、请求头、消息主体。<br>请求格式如下：  </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">request-line</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">headers</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">blank</span> <span class="attr">line</span>&gt;</span></span><br><span class="line">[<span class="tag">&lt;<span class="name">request-body</span>&gt;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--</span><br><span class="line">说明:</span><br><span class="line">第一行必须是一个请求行(request-line),用来说明请求类型,要访问的资源以及所使用的HTTP版本</span><br><span class="line">紧接着是一个首部(header)小节,用来说明服务器要使用的附加信息</span><br><span class="line">之后是一个空行</span><br><span class="line">再后面可以添加任意的其他数据[称之为主体(body)]</span><br><span class="line">--&gt;</span></span><br></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/06/19/Express4xx不懂（一）/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/18/当React.js遇到ES6/" itemprop="url">
                   当React.js遇到ES6
                 </a>
@@ -282,6 +573,30 @@
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/学习/" itemprop="url" rel="index">
                     <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/学习/front-end/" itemprop="url" rel="index">
+                    <span itemprop="name">front-end</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/学习/front-end/react-js/" itemprop="url" rel="index">
+                    <span itemprop="name">react.js</span>
                   </a>
                 </span>
 
@@ -587,7 +902,7 @@ npm install
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -595,7 +910,7 @@ npm install
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -604,7 +919,7 @@ npm install
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
