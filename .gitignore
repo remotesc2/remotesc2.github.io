@@ -1,0 +1,6 @@
+.DS_Store
+.idea/
+.deploy_git/
+*.log
+node_modules/
+themes/next/
