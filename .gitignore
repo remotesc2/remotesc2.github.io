@@ -3,4 +3,5 @@
 .deploy_git/
 *.log
 node_modules/
+public/
 themes/next/

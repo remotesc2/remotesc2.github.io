@@ -4,7 +4,7 @@
 
 # Site
 title: Re的废话流
-subtitle: 
+subtitle:
 description:
 author: Re
 language: zh-Hans
@@ -69,6 +69,5 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/remotesc2/road.git
-  branch: gh-pages
-  
+  repo: git@github.com:remotesc2/remotesc2.github.io.git
+  branch: master
