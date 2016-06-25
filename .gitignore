@@ -1,7 +1,9 @@
 .DS_Store
 .idea/
+.git/
 .deploy_git/
 *.log
+db.json
 node_modules/
 public/
 themes/next/
