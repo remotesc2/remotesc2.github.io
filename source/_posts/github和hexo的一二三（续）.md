@@ -33,7 +33,7 @@ c) 用公钥可以解开私钥加密的信息，反之亦成立。
 d) 同时生成公钥和私钥应该相对比较容易，但是从公钥推算出私钥，应该是很困难或者是不可能的。  
 
 通用的单钥加密算法为DES（Data Encryption Standard）。  
-通用的双钥加密算法为RSA（ Rivest-Shamir-Adleman）。
+通用的双钥加密算法为RSA（Rivest-Shamir-Adleman）。
 
 <!--more-->
 
@@ -93,6 +93,11 @@ SSH 即安全外壳协议，Secure Shell Protocol，它采用公钥加密方式�
 
 1. 用户需要先用有自己的公钥，如果没有，可以使用 `ssh-keygen` ，会在 **~/.ssh** 下生成的两个新文件：id_rsa.pub（公钥）和id_rsa（私钥），这就是自己的公钥、私钥对。
 2. 将自己的公钥追加到服务器的 **~/.ssh/authorized_keys** 文件中
+
+想想
+---
+
+DES 是啥？RSA是啥？
 
 参考
 ---
