@@ -12,7 +12,7 @@ categories:
 - git
 ---
 
-github和hexo的一二三（续）
+GitHub 和 Hexo--加密
 ===
 
 盲点

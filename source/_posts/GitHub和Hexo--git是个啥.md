@@ -12,13 +12,11 @@ categories:
 - git
 ---
 
-github和hexo的一二三
+GitHub 和 Hexo -- git是个啥
 ===
 
-盲点
+盲点——git 是个啥
 ---
-
-### 关于git的一二三
 
 之前只是知道 git 是个什么玩意，github 是个什么玩意，但对于怎么用却一概不知，现在傻了吧！书到用时方恨少，赶紧补起......  
 
@@ -34,7 +32,7 @@ git 的基本操作分为5种
 
 <!--more-->
 
-#### git clone
+### git clone
 
 克隆版本，相当于从服务器克隆一份代码到本机。先 `cd` 到用于存放代码的目录下，然后执行下方命令
 
@@ -50,7 +48,7 @@ git clone <远程版本库地址> <本地目录名>
 git clone git@github.com:remotesc2/remotesc2.github.io.git
 ```
 
-#### git remote
+### git remote
 
 git 要求每个远程主机都必须指定一个主机名，默认名是 **origin**。`git remote` 命令就用于管理主机名。  
 
@@ -111,7 +109,7 @@ git remote rename <原主机名> <新主机名>
 git remote rename origin otherOrigin
 ```
 
-#### fit fetch
+### fit fetch
 
 当远程主机的代码库有了更新，git里面叫做 commit，当要把更新取回本地，这时候就要用到 `fit fetch` 命令。
 
@@ -129,7 +127,7 @@ git fetch <远程主机名> <分支名>
 git fetch origin master
 ```
 
-#### git pull
+### git pull
 
 从远程主机取回某个分支，并与本机代码库进行合并
 
@@ -151,7 +149,7 @@ git pull origin hexo:master
 git pull origin hexo
 ```
 
-#### git push
+### git push
 
 本地分支的更新，推送到远程主机
 
@@ -159,7 +157,7 @@ git pull origin hexo
 git push <远程主机名> <本地分支名>:<远程分支名>
 ```
 
-#### github 流程
+### github 流程
 
 **create a new repository on the command line**
 
@@ -179,7 +177,7 @@ git remote add origin git@github.com:remotesc2/remotesc2.github.io.git
 git push -u origin master
 ```
 
-### mac 上怎么创建ssh
+## mac 上怎么创建ssh
 
 使用 `git clone` 命令从 github 上克隆代码库时，如果使用SSH链接（例如：git@github.com:remotesc2/remotesc2.github.io.gitt），但你的 **SSH key** 并没有添加到 github 帐号设置中，会出现以下错误：  
 
@@ -218,9 +216,9 @@ ssh -T remotesc2@github.com
 Hi remotesc2! You've successfully authenticated, but GitHub does not provide shell access.
 ```
 
-### git push 中碰到的问题
+## git push 中碰到的问题
 
-#### error: "git add README.md" returns "fatal: path spec 'README.md' did not match any files'
+### error: "git add README.md" returns "fatal: path spec 'README.md' did not match any files'
 
 1. Open your text editor of choice.
 2. Create a file, and make sure you name it 'README.md' (you can rename the file with the .md file extension after you save it).
@@ -229,7 +227,7 @@ Hi remotesc2! You've successfully authenticated, but GitHub does not provide she
 5. In Terminal (for Mac users) type 'git add README.md'
 6. Type 'ls' to confirm the file has been committed (it should just show up as 'README.md' on the next line in terminal).
 
-#### error: src refspec master does not match any
+### error: src refspec master does not match any
 
 引起该错误的原因是，目录中没有文件，空目录是不能提交的，可以新建一个文件......
 
@@ -268,7 +266,7 @@ git pull origin master
 git push origin master
 ```
 
-### 今天的主旨
+## 今天的主旨
 
 之所以会引出这么多的**盲点**，就是因为这么一个需求——*在 GitHub Pages 的仓库中，创建两个分支，一个用来存放 Hexo 网站文件，一个用来发布网站*  
 流程基本如下：
@@ -284,6 +282,7 @@ git@github.com:remotesc2/remotesc2.github.io.git
 
 参考
 ---
+
 1. [http://www.ruanyifeng.com/blog/2014/06/git_remote.html](http://www.ruanyifeng.com/blog/2014/06/git_remote.html)
 2. [http://www.cnblogs.com/heyonggang/p/3462191.html](http://www.cnblogs.com/heyonggang/p/3462191.html)
 3. [http://justcoding.iteye.com/blog/1829693](http://justcoding.iteye.com/blog/1829693)

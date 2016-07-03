@@ -11,13 +11,13 @@ categories:
 - Express4
 ---
 
-从0开始用Express
+Express4xx 不懂--post 分类
 ===
 
 盲点
 ---
 
-### 到底http中的post请求分为几种？  
+### 到底 http 中 post 请求分为几种？  
 
 [HTTP/1.1协议](http://www.ietf.org/rfc/rfc2616.txt)（明显我就从来没看过）规定HTTP请求有 OPTIONS、GET、HEAD、POST、PUT、DELETE、TRACE、CONNECT 这几种，但是平常说实话也就用到 **get** 和 **post**。  
 

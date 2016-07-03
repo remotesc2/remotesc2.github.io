@@ -12,7 +12,7 @@ categories:
 - git
 ---
 
-github和hexo的一二三（续2）
+GitHub 和 Hexo--学习 git
 ===
 
 盲点—— git 的几个基本概念
