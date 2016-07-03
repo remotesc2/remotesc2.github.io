@@ -1,0 +1,771 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="git,github,hexo,next," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="GitHub 和 Hexo – git是个啥盲点——git 是个啥之前只是知道 git 是个什么玩意，github 是个什么玩意，但对于怎么用却一概不知，现在傻了吧！书到用时方恨少，赶紧补起……  
+git 的基本操作分为5种
+
+git clone
+git remote
+git fetch
+git pull
+git push
+
+一个个的来，这些只是都来自于阮大大的博客，记录一下，吸收吸收。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="github和hexo的一二三">
+<meta property="og:url" content="http://yoursite.com/2016/06/22/GitHub和Hexo--git是个啥/index.html">
+<meta property="og:site_name" content="Re的废话流">
+<meta property="og:description" content="GitHub 和 Hexo – git是个啥盲点——git 是个啥之前只是知道 git 是个什么玩意，github 是个什么玩意，但对于怎么用却一概不知，现在傻了吧！书到用时方恨少，赶紧补起……  
+git 的基本操作分为5种
+
+git clone
+git remote
+git fetch
+git pull
+git push
+
+一个个的来，这些只是都来自于阮大大的博客，记录一下，吸收吸收。">
+<meta property="og:updated_time" content="2016-07-03T03:44:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="github和hexo的一二三">
+<meta name="twitter:description" content="GitHub 和 Hexo – git是个啥盲点——git 是个啥之前只是知道 git 是个什么玩意，github 是个什么玩意，但对于怎么用却一概不知，现在傻了吧！书到用时方恨少，赶紧补起……  
+git 的基本操作分为5种
+
+git clone
+git remote
+git fetch
+git pull
+git push
+
+一个个的来，这些只是都来自于阮大大的博客，记录一下，吸收吸收。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/06/22/GitHub和Hexo--git是个啥/"/>
+
+  <title> github和hexo的一二三 | Re的废话流 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Re的废话流</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                github和hexo的一二三
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-22T23:07:55+08:00" content="2016-06-22">
+              2016-06-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/学习/front-end/" itemprop="url" rel="index">
+                    <span itemprop="name">front-end</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/学习/front-end/git/" itemprop="url" rel="index">
+                    <span itemprop="name">git</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="GitHub-和-Hexo-–-git是个啥"><a href="#GitHub-和-Hexo-–-git是个啥" class="headerlink" title="GitHub 和 Hexo – git是个啥"></a>GitHub 和 Hexo – git是个啥</h1><h2 id="盲点——git-是个啥"><a href="#盲点——git-是个啥" class="headerlink" title="盲点——git 是个啥"></a>盲点——git 是个啥</h2><p>之前只是知道 git 是个什么玩意，github 是个什么玩意，但对于怎么用却一概不知，现在傻了吧！书到用时方恨少，赶紧补起……  </p>
+<p>git 的基本操作分为5种</p>
+<ul>
+<li>git clone</li>
+<li>git remote</li>
+<li>git fetch</li>
+<li>git pull</li>
+<li>git push</li>
+</ul>
+<p>一个个的来，这些只是都来自于阮大大的博客，记录一下，吸收吸收。</p>
+<a id="more"></a>
+<h3 id="git-clone"><a href="#git-clone" class="headerlink" title="git clone"></a>git clone</h3><p>克隆版本，相当于从服务器克隆一份代码到本机。先 <code>cd</code> 到用于存放代码的目录下，然后执行下方命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone &lt;远程版本库地址&gt;</span><br><span class="line">// 没用过这种</span><br><span class="line">git clone &lt;远程版本库地址&gt; &lt;本地目录名&gt;</span><br></pre></td></tr></table></figure>
+<p>例如，我想 clone github 上的一个仓库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:remotesc2/remotesc2.github.io.git</span><br></pre></td></tr></table></figure>
+<h3 id="git-remote"><a href="#git-remote" class="headerlink" title="git remote"></a>git remote</h3><p>git 要求每个远程主机都必须指定一个主机名，默认名是 <strong>origin</strong>。<code>git remote</code> 命令就用于管理主机名。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote</span><br><span class="line">--&gt;</span><br><span class="line">origin</span><br></pre></td></tr></table></figure>
+<p><code>git remote -v</code> 用于查看远程主机的网址  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br><span class="line">--&gt;</span><br><span class="line">origin	https://github.com/remotesc2/remotesc2.github.io.git (fetch)</span><br><span class="line">origin	https://github.com/remotesc2/remotesc2.github.io.git (push)</span><br></pre></td></tr></table></figure>
+<p>如果想用其他的主机名，需要用 <code>git clone</code> 的 <code>-o</code> 选项，例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git clone -o newOrigin git@github.com:remotesc2/remotesc2.github.io.git</span><br><span class="line"></span><br><span class="line">git remote</span><br><span class="line">--&gt;</span><br><span class="line">newOrigin</span><br></pre></td></tr></table></figure>
+<p><code>git remote show</code>，用于查看远程主机的详细信息  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote show &lt;主机名&gt;</span><br><span class="line"></span><br><span class="line">git remote show newOrigin</span><br></pre></td></tr></table></figure>
+<p><code>git remote add</code>，用于添加远程主机</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote add &lt;主机名&gt; &lt;网址&gt;</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p><code>git remote rm</code> 用于删除远程主机  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote rm &lt;主机名&gt;</span><br><span class="line"></span><br><span class="line">git remote rm newOrigin</span><br></pre></td></tr></table></figure>
+<p><code>git remote rename</code>，用于为远程主机改名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote rename &lt;原主机名&gt; &lt;新主机名&gt;</span><br><span class="line"></span><br><span class="line">git remote rename origin otherOrigin</span><br></pre></td></tr></table></figure>
+<h3 id="fit-fetch"><a href="#fit-fetch" class="headerlink" title="fit fetch"></a>fit fetch</h3><p>当远程主机的代码库有了更新，git里面叫做 commit，当要把更新取回本地，这时候就要用到 <code>fit fetch</code> 命令。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git fetch &lt;远程主机名&gt;</span><br><span class="line"></span><br><span class="line">git fetch origin</span><br></pre></td></tr></table></figure>
+<p><code>git fetch</code> 通常用来查看其他人的进程，因为它取回的代码对你本地的开发代码没有影响，这点还没明白，<a href="www.baidu.com?wd=git fetch">坑</a>。默认情况下，fetch 会把所有分支都进行更细，如果指向更新某一个分支  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git fetch &lt;远程主机名&gt; &lt;分支名&gt;</span><br><span class="line"></span><br><span class="line">git fetch origin master</span><br></pre></td></tr></table></figure>
+<h3 id="git-pull"><a href="#git-pull" class="headerlink" title="git pull"></a>git pull</h3><p>从远程主机取回某个分支，并与本机代码库进行合并</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</span><br></pre></td></tr></table></figure>
+<p>比如，要取回 <strong>origin</strong> 中 <strong>hexo</strong> 分支，与本地 <strong>master</strong> 进行合并  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git pull &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</span><br><span class="line"></span><br><span class="line">git pull origin hexo:master</span><br></pre></td></tr></table></figure>
+<p>如果是与本地的 <strong>hexo</strong> 分支进行合并，那么就可省略后一部分属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin hexo</span><br></pre></td></tr></table></figure>
+<h3 id="git-push"><a href="#git-push" class="headerlink" title="git push"></a>git push</h3><p>本地分支的更新，推送到远程主机</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="github-流程"><a href="#github-流程" class="headerlink" title="github 流程"></a>github 流程</h3><p><strong>create a new repository on the command line</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">touch README.md</span><br><span class="line">git init</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin git@github.com:remotesc2/remotesc2.github.io.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<p><strong>push an existing repository from the command line</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin git@github.com:remotesc2/remotesc2.github.io.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<h2 id="mac-上怎么创建ssh"><a href="#mac-上怎么创建ssh" class="headerlink" title="mac 上怎么创建ssh"></a>mac 上怎么创建ssh</h2><p>使用 <code>git clone</code> 命令从 github 上克隆代码库时，如果使用SSH链接（例如：git@github.com:remotesc2/remotesc2.github.io.gitt），但你的 <strong>SSH key</strong> 并没有添加到 github 帐号设置中，会出现以下错误：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Permission denied (publickey).</span><br><span class="line">fatal: The remote end hung up unexpectedly</span><br></pre></td></tr></table></figure>
+<p>可先通过命令 <code>cd ~/.ssh</code> 来检查本机是否已经存在ssh。  </p>
+<p>如果不存在，这时候就需要在本地创建 <strong>SSH key</strong>，命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure>
+<p>然后系统提示输入文件保存位置等信息，一般连续敲三次回车即可，生成的 <strong>SSH key</strong> 文件保存在中 <code>~/.ssh/id_rsa.pub</code>  </p>
+<p>如果存在，可以直接用文本编辑工具打开该目录下的文件，我用的是 atom，所以命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">atom ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+<p>接下来，拷贝 <code>~/.ssh/id_rsa.pub</code> 文件内的所有内容，打开 github 的添加 <strong>SSH key</strong> <a href="https://github.com/settings/keys" target="_blank" rel="external">界面</a>，填一个你自己喜欢的名称，并把拷贝的内容粘帖到 key 一栏，点“add key”按钮保存。</p>
+<p>最后就是验证是否连接上 github，使用命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T remotesc2@github.com</span><br></pre></td></tr></table></figure>
+<p>如果出现下面提示，说明连接成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi remotesc2! You&apos;ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure>
+<h2 id="git-push-中碰到的问题"><a href="#git-push-中碰到的问题" class="headerlink" title="git push 中碰到的问题"></a>git push 中碰到的问题</h2><h3 id="error-“git-add-README-md”-returns-“fatal-path-spec-‘README-md’-did-not-match-any-files’"><a href="#error-“git-add-README-md”-returns-“fatal-path-spec-‘README-md’-did-not-match-any-files’" class="headerlink" title="error: “git add README.md” returns “fatal: path spec ‘README.md’ did not match any files’"></a>error: “git add README.md” returns “fatal: path spec ‘README.md’ did not match any files’</h3><ol>
+<li>Open your text editor of choice.</li>
+<li>Create a file, and make sure you name it ‘README.md’ (you can rename the file with the .md file extension after you save it).</li>
+<li>Save to your desktop or wherever.</li>
+<li>Drag this file to your git repository.</li>
+<li>In Terminal (for Mac users) type ‘git add README.md’</li>
+<li>Type ‘ls’ to confirm the file has been committed (it should just show up as ‘README.md’ on the next line in terminal).</li>
+</ol>
+<h3 id="error-src-refspec-master-does-not-match-any"><a href="#error-src-refspec-master-does-not-match-any" class="headerlink" title="error: src refspec master does not match any"></a>error: src refspec master does not match any</h3><p>引起该错误的原因是，目录中没有文件，空目录是不能提交的，可以新建一个文件……</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">touch README</span><br><span class="line">git add README </span><br><span class="line">git commit -m &apos;first commit&apos;</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+<p>提交代码的大致流程如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1. 在github上创建项目</span><br><span class="line"></span><br><span class="line">2. 使用git clone https://github.com/xxxxxxx/xxxxx.git克隆到本地</span><br><span class="line"></span><br><span class="line">3. 编辑项目</span><br><span class="line"></span><br><span class="line">4. git add . （将改动添加到暂存区）</span><br><span class="line"></span><br><span class="line">5. git commit -m &quot;提交说明&quot;</span><br><span class="line"></span><br><span class="line">6. git push origin master 将本地更改推送到远程master分支。</span><br></pre></td></tr></table></figure>
+<p>但是如果远程主机已经有文件了，就会出现错误。这时候应该先 pull 一次，即</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
+<p>注：pull = fetch + merge<br>然后再 push，即</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+<h2 id="今天的主旨"><a href="#今天的主旨" class="headerlink" title="今天的主旨"></a>今天的主旨</h2><p>之所以会引出这么多的<strong>盲点</strong>，就是因为这么一个需求——<em>在 GitHub Pages 的仓库中，创建两个分支，一个用来存放 Hexo 网站文件，一个用来发布网站</em><br>流程基本如下：<br>git@github.com:remotesc2/remotesc2.github.io.git</p>
+<ol>
+<li>创建仓库，remotesc2.github.io.git</li>
+<li>选择一个文件夹，使用 GitHub Desktop 将仓库 clone 到此文件夹</li>
+<li>将 Hexo 网站文件放到此文件夹中</li>
+<li>提交一个新分支 hexo</li>
+<li>将 hexo 设置为默认分支（默认情况下， master是默认分支）</li>
+<li>修改 _config.yml 中的 deploy 参数，分支应为 master</li>
+<li>这时就可通过 GitHub Desktop 将 Hexo 网站文件 push 到 hexo 分支；通过 <code>hexo d</code>将发布网站 push 到 master 分支</li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a href="http://www.ruanyifeng.com/blog/2014/06/git_remote.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2014/06/git_remote.html</a></li>
+<li><a href="http://www.cnblogs.com/heyonggang/p/3462191.html" target="_blank" rel="external">http://www.cnblogs.com/heyonggang/p/3462191.html</a></li>
+<li><a href="http://justcoding.iteye.com/blog/1829693" target="_blank" rel="external">http://justcoding.iteye.com/blog/1829693</a></li>
+<li><a href="http://www.jianshu.com/p/8d26730386f3" target="_blank" rel="external">http://www.jianshu.com/p/8d26730386f3</a></li>
+<li><a href="http://crazymilk.github.io/2015/12/28/GitHub-Pages-Hexo搭建博客/#more" target="_blank" rel="external">http://crazymilk.github.io/2015/12/28/GitHub-Pages-Hexo搭建博客/#more</a></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/git/" rel="tag">#git</a>
+          
+            <a href="/tags/github/" rel="tag">#github</a>
+          
+            <a href="/tags/hexo/" rel="tag">#hexo</a>
+          
+            <a href="/tags/next/" rel="tag">#next</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/19/Express4xx不懂--如何使用mongodb/" rel="next" title="Express4xx不懂（二）-- mongodb">
+                <i class="fa fa-chevron-left"></i> Express4xx不懂（二）-- mongodb
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/23/GitHub和Hexo--加密/" rel="prev" title="github和hexo的一二三（续）">
+                github和hexo的一二三（续） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Re" />
+          <p class="site-author-name" itemprop="name">Re</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/remotesc2/road" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/XXX" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GitHub-和-Hexo-–-git是个啥"><span class="nav-number">1.</span> <span class="nav-text">GitHub 和 Hexo – git是个啥</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#盲点——git-是个啥"><span class="nav-number">1.1.</span> <span class="nav-text">盲点——git 是个啥</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git-clone"><span class="nav-number">1.1.1.</span> <span class="nav-text">git clone</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-remote"><span class="nav-number">1.1.2.</span> <span class="nav-text">git remote</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fit-fetch"><span class="nav-number">1.1.3.</span> <span class="nav-text">fit fetch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-pull"><span class="nav-number">1.1.4.</span> <span class="nav-text">git pull</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-push"><span class="nav-number">1.1.5.</span> <span class="nav-text">git push</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#github-流程"><span class="nav-number">1.1.6.</span> <span class="nav-text">github 流程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mac-上怎么创建ssh"><span class="nav-number">1.2.</span> <span class="nav-text">mac 上怎么创建ssh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-push-中碰到的问题"><span class="nav-number">1.3.</span> <span class="nav-text">git push 中碰到的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#error-“git-add-README-md”-returns-“fatal-path-spec-‘README-md’-did-not-match-any-files’"><span class="nav-number">1.3.1.</span> <span class="nav-text">error: “git add README.md” returns “fatal: path spec ‘README.md’ did not match any files’</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#error-src-refspec-master-does-not-match-any"><span class="nav-number">1.3.2.</span> <span class="nav-text">error: src refspec master does not match any</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#今天的主旨"><span class="nav-number">1.4.</span> <span class="nav-text">今天的主旨</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">1.5.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Re</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

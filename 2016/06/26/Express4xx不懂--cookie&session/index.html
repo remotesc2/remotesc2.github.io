@@ -1,0 +1,742 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="express4,HTTP,cookie,session," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Express4xx 不懂–cookie &amp;amp; session先巩固下 HTTP 基础什么是 HTTP超文本传输协议，即 HTTP 是一种通信协议，它允许将超文本标记语言（HTML）文档从 Web 服务器传送到客户端的浏览器。
+目前我们使用的是 HTTP/1.1 版本
+浏览器到服务器发生了什么？当在浏览器输入 URL 后，我们的浏览器给 Web 服务器发送了一个 Request, Web 服">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Express4xx不懂（三）">
+<meta property="og:url" content="http://yoursite.com/2016/06/26/Express4xx不懂--cookie&session/index.html">
+<meta property="og:site_name" content="Re的废话流">
+<meta property="og:description" content="Express4xx 不懂–cookie &amp;amp; session先巩固下 HTTP 基础什么是 HTTP超文本传输协议，即 HTTP 是一种通信协议，它允许将超文本标记语言（HTML）文档从 Web 服务器传送到客户端的浏览器。
+目前我们使用的是 HTTP/1.1 版本
+浏览器到服务器发生了什么？当在浏览器输入 URL 后，我们的浏览器给 Web 服务器发送了一个 Request, Web 服">
+<meta property="og:updated_time" content="2016-07-03T03:50:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Express4xx不懂（三）">
+<meta name="twitter:description" content="Express4xx 不懂–cookie &amp;amp; session先巩固下 HTTP 基础什么是 HTTP超文本传输协议，即 HTTP 是一种通信协议，它允许将超文本标记语言（HTML）文档从 Web 服务器传送到客户端的浏览器。
+目前我们使用的是 HTTP/1.1 版本
+浏览器到服务器发生了什么？当在浏览器输入 URL 后，我们的浏览器给 Web 服务器发送了一个 Request, Web 服">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/06/26/Express4xx不懂--cookie&session/"/>
+
+  <title> Express4xx不懂（三） | Re的废话流 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Re的废话流</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Express4xx不懂（三）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-26T11:28:31+08:00" content="2016-06-26">
+              2016-06-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/学习/back-end/" itemprop="url" rel="index">
+                    <span itemprop="name">back-end</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/学习/back-end/node-js/" itemprop="url" rel="index">
+                    <span itemprop="name">node.js</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/学习/back-end/node-js/Express4/" itemprop="url" rel="index">
+                    <span itemprop="name">Express4</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Express4xx-不懂–cookie-amp-session"><a href="#Express4xx-不懂–cookie-amp-session" class="headerlink" title="Express4xx 不懂–cookie &amp; session"></a>Express4xx 不懂–cookie &amp; session</h1><h2 id="先巩固下-HTTP-基础"><a href="#先巩固下-HTTP-基础" class="headerlink" title="先巩固下 HTTP 基础"></a>先巩固下 HTTP 基础</h2><h3 id="什么是-HTTP"><a href="#什么是-HTTP" class="headerlink" title="什么是 HTTP"></a>什么是 HTTP</h3><p>超文本传输协议，即 HTTP 是一种通信协议，它允许将超文本标记语言（HTML）文档从 Web 服务器传送到客户端的浏览器。</p>
+<p>目前我们使用的是 HTTP/1.1 版本</p>
+<h3 id="浏览器到服务器发生了什么？"><a href="#浏览器到服务器发生了什么？" class="headerlink" title="浏览器到服务器发生了什么？"></a>浏览器到服务器发生了什么？</h3><p>当在浏览器输入 URL 后，我们的浏览器给 Web 服务器发送了一个 Request, Web 服务器接到Request 后进行处理，生成相应的 Response，然后发送给浏览器，浏览器解析 Response 中的 HTML，这样我们就看到了网页。</p>
+<h3 id="url-组成"><a href="#url-组成" class="headerlink" title="url 组成"></a>url 组成</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schema://host[:port#]/path/.../[?query-string][#anchor]</span><br></pre></td></tr></table></figure>
+<p>scheme ——指定低层使用的协议(例如：http, https, ftp)<br>host —— HTTP 服务器的IP地址或者域名<br>port# —— HTTP 服务器的默认端口是80，这种情况下端口号可以省略。如果使用了别的端口，必须指明，例如 <a href="http://www.cnblogs.com:8080/" target="_blank" rel="external">http://www.cnblogs.com:8080/</a><br>path ——访问资源的路径<br>query-string ——发送给http服务器的数据<br>anchor —— 锚  </p>
+<h3 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h3><p>Response 消息中的第一行叫做状态行，由 HTTP 协议版本号，状态码，状态消息三部分组成。<br>状态码用来告诉HTTP客户端,HTTP服务器是否产生了预期的Response.</p>
+<p>HTTP/1.1中定义了5类状态码， 状态码由三位数字组成，第一个数字定义了响应的类别</p>
+<p>1XX  提示信息 - 表示请求已被成功接收，继续处理<br>2XX  成功 - 表示请求已被成功接收，理解，接受<br>3XX  重定向 - 要完成请求必须进行更进一步的处理<br>4XX  客户端错误 -  请求有语法错误或请求无法实现<br>5XX  服务器端错误 -   服务器未能实现合法的请求  </p>
+<h3 id="HTTP-的无状态性"><a href="#HTTP-的无状态性" class="headerlink" title="HTTP 的无状态性"></a>HTTP 的无状态性</h3><p>在讲 cookie 和 session 之前，要先清除一个概念—— HTTP 的无状态性！ RFC 里没有提及，但是从 HTTP 历史以及应用场景，我们可以推测出一些理由：</p>
+<ol>
+<li>设计 HTTP 最初的目的是为了提供一种发布和接收HTML页面的方法。那个时候没有动态页面技术，只有纯粹的静态HTML页面，因此根本不需要协议能保持状态；</li>
+<li>用户在收到响应时，往往要花一些时间来阅读页面，因此如果保持客户端和服务端之间的连接，那么这个连接在大多数的时间里都将是空闲的，这是一种资源的无端浪费。所以HTTP原始的设计是默认短连接，即客户端和服务端完成一次请求和响应之后就断开TCP连接，服务器因此无法预知客户端的下一个动作，它甚至都不知道这个用户会不会再次访问，因此让HTTP协议来维护用户的访问状态也全然没有必要；</li>
+<li>将一部分复杂性转嫁到以HTTP协议为基础的技术之上可以使得HTTP在协议这个层面上显得相对简单，而这种简单也赋予了HTTP更强的扩展能力。事实上，session技术从本质上来讲也是对HTTP协议的一种扩展。</li>
+</ol>
+<blockquote>
+<p>RFC：Request For Comments（RFC），是一系列以编号排定的文件。文件收集了有关互联网相关信息，以及UNIX和互联网社区的软件文件。目前RFC文件是由 Internet Society（ISOC——因特网社团）赞助发行。基本的互联网通信协议都有在 RFC 文件内详细说明。RFC 文件还额外加入许多的论题在标准内，例如对于互联网新开发的协议及发展中所有的记录。因此几乎所有的互联网标准都有收录在 RFC 文件之中。——来自百度百科</p>
+</blockquote>
+<p>总而言之，HTTP的无状态是由其历史使命而决定的。  </p>
+<p>但随着网络技术的蓬勃发展，人们再也不满足于死板乏味的静态 HTML，他们希望 web 应用能动起来，于是客户端出现了脚本和 DOM 技术，HTML 里增加了表单，而服务端出现了 CGI 等等动态技术。</p>
+<blockquote>
+<p>CGI 又是什么鬼？</p>
+</blockquote>
+<p>正是这种web动态化的需求，给 HTTP 协议提出了一个难题：一个无状态的协议怎样才能关联两次连续的请求呢？也就是说无状态的协议怎样才能满足有状态的需求呢？</p>
+<p>此时有状态是必然趋势而协议的无状态性也是木已成舟，因此我们需要一些方案来解决这个矛盾，来保持 HTTP 连接状态，于是出现了 cookie 和 session。  </p>
+<p>这里，作者提到了两点特别容易混淆的问题。</p>
+<ol>
+<li><p>无状态性和长连接</p>
+<p> 可能有人会问，现在被广泛使用的 HTTP1.1 默认使用长连接，它还是无状态的吗？<br> 连接方式和有无状态是完全没有关系的两回事。因为状态从某种意义上来讲就是数据，而连接方式只是决定了数据的传输方式，而不能决定数据。长连接是随着计算机性能的提高和网络环境的改善所采取的一种合理的性能上的优化，一般情况下，web服务器会对长连接的数量进行限制，以免资源的过度消耗。</p>
+</li>
+<li><p>无状态性和session</p>
+<p> Session是有状态的，而HTTP协议是无状态的，二者是否矛盾呢？<br> Session和HTTP协议属于不同层面的事物，后者属于ISO七层模型的最高层应用层，前者不属于后者，前者是具体的动态页面技术来实现的，但同时它又是基于后者的。在下文中笔者会分析Servlet/Jsp技术中的session机制，这会使你对此有更深刻的理解。</p>
+</li>
+</ol>
+<p>看完这两点，我发现我就是那种混淆的……</p>
+<blockquote>
+<p>长连接又是个啥？之前一说长连接不都是 socket 吗？</p>
+</blockquote>
+<h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><p>cookie 将状态数据保存在客户端。</p>
+<p>cookie 是在 RFC2109（已废弃，被RFC2965取代）里初次被描述的，每个客户端最多保持三百个 cookie，每个域名下最多 20 个 Cookie（实际上一般浏览器现在都比这个多，如Firefox是50个），而每个 cookie 的大小为最多4K，不过不同的浏览器都有各自的实现。对于 cookie 的使用，最重要的就是要控制 cookie 的大小，不要放入无用的信息，也不要放入过多信息。</p>
+<p>无论使用何种服务端技术，只要发送回的 HTTP 响应中包含如下形式的头，则视为服务器要求设置一个cookie：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-cookie:name=name;expires=date;path=path;domain=domain</span><br></pre></td></tr></table></figure>
+<p>支持 cookie 的浏览器都会对此作出反应，即创建 cookie 文件并保存（也可能是内存 cookie），用户以后在每次发出请求时，浏览器都要判断当前所有的cookie中有没有没失效（根据 expires 属性判断）并且匹配了 path 属性的 cookie 信息，如果有的话，会以下面的形式加入到请求头中发回服务端：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cookie: name="zj"; Path="/linkage"</span><br></pre></td></tr></table></figure>
+<p>服务端的动态脚本会对其进行分析，并做出相应的处理，当然也可以选择直接忽略。</p>
+<p>这里牵扯到一个规范（或协议）与实现的问题，简单来讲就是规范规定了做成什么样子，那么实现就必须依据规范来做，这样才能互相兼容，但是各个实现所使用的方式却不受约束，也可以在实现了规范的基础上超出规范，这就称之为扩展了。无论哪种浏览器，只要想提供cookie的功能，那就必须依照相应的RFC规范来实现。所以这里服务器只管发Set-cookie头域，这也是HTTP协议无状态性的一种体现。</p>
+<p>需要注意的是，出于安全性的考虑，cookie 可以被浏览器禁用。</p>
+<h2 id="session"><a href="#session" class="headerlink" title="session"></a>session</h2><p>session 将数据保存在服务端。</p>
+<p>笔者没有找到相关的RFC，因为session本就不是协议层面的事物。它的基本原理是服务端为每一个session维护一份会话信息数据，而客户端和服务端依靠一个全局唯一的标识来访问会话信息数据。用户访问web应用时，服务端程序决定何时创建session，创建session可以概括为三个步骤：</p>
+<ol>
+<li>生成全局唯一标识符（sessionid）；</li>
+<li>开辟数据存储空间。一般会在内存中创建相应的数据结构，但这种情况下，系统一旦掉电，所有的会话数据就会丢失，如果是电子商务网站，这种事故会造成严重的后果。不过也可以写到文件里甚至存储在数据库中，这样虽然会增加I/O开销，但session可以实现某种程度的持久化，而且更有利于session的共享；</li>
+<li><p>将session的全局唯一标示符发送给客户端。<br>问题的关键就在服务端如何发送这个session的唯一标识上。联系到HTTP协议，数据无非可以放到请求行、头域或Body里，基于此，一般来说会有两种常用的方式：cookie和URL重写</p>
+<ul>
+<li><p>Cookie<br>读者应该想到了，对，服务端只要设置Set-cookie头就可以将session的标识符传送到客户端，而客户端此后的每一次请求都会带上这个标识符，由于cookie可以设置失效时间，所以一般包含session信息的cookie会设置失效时间为0，即浏览器进程有效时间。至于浏览器怎么处理这个0，每个浏览器都有自己的方案，但差别都不会太大（一般体现在新建浏览器窗口的时候）；</p>
+</li>
+<li><p>URL重写<br>所谓URL重写，顾名思义就是重写URL。试想，在返回用户请求的页面之前，将页面内所有的URL后面全部以get参数的方式加上session标识符（或者加在path info部分等等），这样用户在收到响应之后，无论点击哪个链接或提交表单，都会在再带上session的标识符，从而就实现了会话的保持。读者可能会觉得这种做法比较麻烦，确实是这样，但是，如果客户端禁用了cookie的话，URL重写将会是首选。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="cookie-amp-session-取舍"><a href="#cookie-amp-session-取舍" class="headerlink" title="cookie &amp; session 取舍"></a>cookie &amp; session 取舍</h2><ol>
+<li>应用场景<br>cookie 的典型应用场景是 Remember Me 服务，即用户的账户信息通过 cookie 的形式保存在客户端，当用户再次请求匹配的URL的时候，账户信息会被传送到服务端，交由相应的程序完成自动登录等功能。当然也可以保存一些客户端信息，比如页面布局以及搜索历史等等。<br>session 的典型应用场景是用户登录某网站之后，将其登录信息放入 session，在以后的每次请求中查询相应的登录信息以确保该用户合法。当然还是有购物车等等经典场景；</li>
+<li>安全性<br>cookie 将信息保存在客户端，如果不进行加密的话，无疑会暴露一些隐私信息，安全性很差，一般情况下敏感信息是经过加密后存储在 cookie 中，但很容易就会被窃取。而 session 只会将信息存储在服务端，如果存储在文件或数据库中，也有被窃取的可能，只是可能性比 cookie 小了太多。<br>session 安全性方面比较突出的是存在会话劫持的问题，这是一种安全威胁，这在下文会进行更详细的说明。总体来讲，session的安全性要高于 cookie；</li>
+<li>性能<br>cookie 存储在客户端，消耗的是客户端的I/O和内存，而 session 存储在服务端，消耗的是服务端的资源。但是 session 对服务器造成的压力比较集中，而 cookie 很好地分散了资源消耗，就这点来说，cookie 是要优于 session的；</li>
+<li>时效性<br>cookie 可以通过设置有效期使其较长时间内存在于客户端，而 session 一般只有比较短的有效期（用户主动销毁 session 或关闭浏览器后引发超时）；</li>
+<li>其他<br>cookie 的处理在开发中没有 session 方便。而且 cookie 在客户端是有数量和大小的限制的，而 session 的大小却只以硬件为限制，能存储的数据无疑大了太多。</li>
+</ol>
+<h2 id="express框架——-session"><a href="#express框架——-session" class="headerlink" title="express框架—— session"></a>express框架—— session</h2><p>需要使用到 <strong>express-session</strong>，<strong>express-session</strong> 是基于 express 框架专门用于处理 session 的中间件。session 的认证机制离不开 cookie，所以还需要使用 cookieParser 中间件。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a href="http://www.cnblogs.com/shoru/archive/2010/02/19/1669395.html" target="_blank" rel="external">http://www.cnblogs.com/shoru/archive/2010/02/19/1669395.html</a></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/express4/" rel="tag">#express4</a>
+          
+            <a href="/tags/HTTP/" rel="tag">#HTTP</a>
+          
+            <a href="/tags/cookie/" rel="tag">#cookie</a>
+          
+            <a href="/tags/session/" rel="tag">#session</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/24/GitHub和Hexo--学习git/" rel="next" title="github和hexo的一二三（续2）">
+                <i class="fa fa-chevron-left"></i> github和hexo的一二三（续2）
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/28/SVN不懂/" rel="prev" title="SVN 不懂">
+                SVN 不懂 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Re" />
+          <p class="site-author-name" itemprop="name">Re</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/remotesc2/road" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/XXX" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Express4xx-不懂–cookie-amp-session"><span class="nav-number">1.</span> <span class="nav-text">Express4xx 不懂–cookie & session</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#先巩固下-HTTP-基础"><span class="nav-number">1.1.</span> <span class="nav-text">先巩固下 HTTP 基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是-HTTP"><span class="nav-number">1.1.1.</span> <span class="nav-text">什么是 HTTP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器到服务器发生了什么？"><span class="nav-number">1.1.2.</span> <span class="nav-text">浏览器到服务器发生了什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#url-组成"><span class="nav-number">1.1.3.</span> <span class="nav-text">url 组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#状态码"><span class="nav-number">1.1.4.</span> <span class="nav-text">状态码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP-的无状态性"><span class="nav-number">1.1.5.</span> <span class="nav-text">HTTP 的无状态性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cookie"><span class="nav-number">1.2.</span> <span class="nav-text">cookie</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#session"><span class="nav-number">1.3.</span> <span class="nav-text">session</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cookie-amp-session-取舍"><span class="nav-number">1.4.</span> <span class="nav-text">cookie & session 取舍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#express框架——-session"><span class="nav-number">1.5.</span> <span class="nav-text">express框架—— session</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">1.6.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Re</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
